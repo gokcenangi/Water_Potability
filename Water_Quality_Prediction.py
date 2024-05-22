@@ -33,7 +33,7 @@ from sklearn.naive_bayes import GaussianNB
 
 pd.set_option("display.max_columns",None)
 pd.set_option("display.width",500)
-df = pd.read_csv("/Users/gokcenangi/PycharmProjects/pythonProject11_Bitirme Projesi/water_potability.csv")
+df = pd.read_csv("water_potability.csv")
 df.head(20)
 df.info()
 
