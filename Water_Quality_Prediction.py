@@ -125,7 +125,7 @@ for col in num_cols:
 num_summary(df,num_cols,plot=True)
 
 #############################################
-# Hedef Değişken Analizi (Analysis of Target Variable)
+# Analysis of Target Variable
 #############################################
 
 def target_summary_with_num(dataframe, target, numerical_col):
@@ -135,7 +135,7 @@ for col in num_cols:
     target_summary_with_num(df, "Potability", col)
 
 #############################################
-# Korelasyon Analizi (Analysis of Correlation)
+# Analysis of Correlation
 #############################################
 def heatmap_correlation(dataframe, numerical_cols):
     corr = dataframe[numerical_cols].corr()
@@ -152,7 +152,7 @@ def heatmap_correlation(dataframe, numerical_cols):
 heatmap_correlation(df, num_cols)
 
 ################################################
-# Değişkenlerin dağılımı grafikle görselleştirme
+# Visualizing distributions of variables
 ################################################
 
 potable = df.query("Potability == 1")
@@ -173,7 +173,8 @@ def plot_distributions(dataframe, not_potable_df, potable_df):
 
 plot_distributions(df, non_potable, potable)
 
-#Sınıflara göre dağılım grafiği
+#Distribution of target variable classes
+
 def plot_distributions_class(dataframe, not_potable_df, potable_df):
     fig = plt.figure(figsize=(20, 10), facecolor="#9FC1F4")
     for i, column in enumerate(dataframe.columns[:9]):
@@ -190,7 +191,7 @@ def plot_distributions_class(dataframe, not_potable_df, potable_df):
 plot_distributions_class(df, non_potable, potable)
 
 
-# Pasta grafik hedef değişkenin dağılımı
+# Pie chart distribution of the target variable
 def plot_potability_distribution(potability_counts):
     plt.figure(figsize=(6, 6), facecolor='#FAF7F2')
     plt.pie(potability_counts, labels=potability_counts.index, autopct='%1.1f%%', startangle=140, colors=["navy", "cornflowerblue"], textprops={'color': 'white', 'fontweight': 'bold'})
@@ -208,7 +209,7 @@ plot_potability_distribution(df['Potability'].value_counts())
 #############################################
 
 #############################################
-# Outliers (Aykırı Değerler)
+# Outliers
 #############################################
 
 def outlier_thresholds(dataframe, col_name, q1=0.05, q3=0.95):
@@ -267,7 +268,7 @@ def plot_boxplots(dataframe, numerical_cols):
 plot_boxplots(df, num_cols)
 
 #############################################
-# Missing Values (Eksik Değerler)
+# Missing Values
 #############################################
 
 df.isnull().sum()
@@ -306,7 +307,7 @@ df["ph"].fillna(df["ph"].median(), inplace=True)
 df["Trihalomethanes"].fillna(df["Trihalomethanes"].median(), inplace=True)
 
 #############################################
-# Feature Extraction (Özellik Çıkarımı)
+# Feature Extraction 
 #############################################
 
 # ph, sülfat, iletkenlik değerlerini içmesuyu kalite standartlarının limitlerine göre gruplandırma
@@ -350,7 +351,7 @@ df.head()
 
 
 #############################################
-# Feature Scaling (Özellik Ölçeklendirme)
+# Feature Scaling 
 #############################################
 
 scaler = StandardScaler()
@@ -358,7 +359,7 @@ df[num_cols] = scaler.fit_transform(df[num_cols])
 
 
 #######################
-#SMOTE UYGULANMASI
+#SMOTE
 ######################
 
 y = df["Potability"]
